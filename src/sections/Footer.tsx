@@ -155,22 +155,11 @@ export default function Footer() {
             </div>
             
             <div className="space-y-4">
-              <div>
-                <p className="text-white/60 text-sm mb-1">Name</p>
-                <p className="text-white font-oswald">Mario Enrico Grunert</p>
-              </div>
-              
-              <div>
-                <p className="text-white/60 text-sm mb-1">Firma</p>
-                <p className="text-white font-oswald">MG Systems & Services</p>
-              </div>
-              
-              <div>
-                <p className="text-white/60 text-sm mb-1">E-Mail</p>
-                <a href="mailto:info@mg-systems-services.de" className="text-film-orange hover:underline font-oswald">
-                  info@mg-systems-services.de
-                </a>
-              </div>
+              <p className="text-white font-oswald">Mario Enrico Grunert</p>
+              <p className="text-white font-oswald">MG Systems & Services</p>
+              <a href="mailto:info@mg-systems-services.de" className="text-film-orange hover:underline font-oswald">
+                info@mg-systems-services.de
+              </a>
             </div>
           </div>
         </div>
