@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { Youtube, Instagram, Send, Film, Globe, Music, BookOpen } from 'lucide-react';
+import { Youtube, Instagram, Send, Film, Globe, Music, BookOpen, X } from 'lucide-react';
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
   const footerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -134,10 +135,46 @@ export default function Footer() {
               © 2026 Herr Lehmanns Weltreise. Alle Rechte vorbehalten.
             </p>
             <p className="text-white/40 text-sm flex items-center justify-center gap-1">
-              Made with <span className="text-film-orange">♥</span> in Dresden by <a href="mailto:info@mg-systems-services.de" title="Mario Enrico Grunert&#10;MG Systems & Services&#10;info@mg-systems-services.de" className="ml-1 hover:opacity-80 transition-opacity duration-200 inline-flex">
+              Webpage Made with <span className="text-film-orange">♥</span> in Dresden by <button onClick={() => setShowContactModal(true)} className="ml-1 hover:opacity-80 transition-opacity duration-200 inline-flex bg-none border-none cursor-pointer p-0">
                 <img src="/images/mg.jpg" alt="MG Systems & Services" className="h-5 inline-block" />
-              </a>
+              </button>
             </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Modal */}
+      {showContactModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-film-dark border border-white/20 p-8 rounded-lg max-w-md w-full mx-4">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-white font-oswald font-bold text-lg">Kontakt</h3>
+              <button onClick={() => setShowContactModal(false)} className="text-white/60 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <p className="text-white/60 text-sm mb-1">Name</p>
+                <p className="text-white font-oswald">Mario Enrico Grunert</p>
+              </div>
+              
+              <div>
+                <p className="text-white/60 text-sm mb-1">Firma</p>
+                <p className="text-white font-oswald">MG Systems & Services</p>
+              </div>
+              
+              <div>
+                <p className="text-white/60 text-sm mb-1">E-Mail</p>
+                <a href="mailto:info@mg-systems-services.de" className="text-film-orange hover:underline font-oswald">
+                  info@mg-systems-services.de
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
           </div>
         </div>
       </div>
