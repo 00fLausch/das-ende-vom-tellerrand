@@ -128,14 +128,14 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col items-center justify-center gap-4 text-center">
             <p className="text-white/40 text-sm">
               © 2026 Herr Lehmanns Weltreise. Alle Rechte vorbehalten.
             </p>
-            <p className="text-white/40 text-sm">
-              Made with <span className="text-film-orange">♥</span> in Dresden by <a href="mailto:info@mg-systems-services.de" title="Mario Enrico Grunert&#10;MG Systems & Services&#10;info@mg-systems-services.de" className="ml-2 hover:opacity-80 transition-opacity duration-200">
-                <img src="/images/mg.jpg" alt="MG Systems & Services" className="h-6 inline-block" />
+            <p className="text-white/40 text-sm flex items-center justify-center gap-1">
+              Made with <span className="text-film-orange">♥</span> in Dresden by <a href="mailto:info@mg-systems-services.de" title="Mario Enrico Grunert&#10;MG Systems & Services&#10;info@mg-systems-services.de" className="ml-1 hover:opacity-80 transition-opacity duration-200 inline-flex">
+                <img src="/images/mg.jpg" alt="MG Systems & Services" className="h-5 inline-block" />
               </a>
             </p>
           </div>
