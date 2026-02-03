@@ -34,7 +34,7 @@ export default function AboutFilmmaker() {
     <section 
       ref={sectionRef}
       id="filmmaker"
-      className="relative w-full py-20 lg:py-32 bg-film-light"
+      className="relative w-full py-20 lg:py-32 bg-film-light overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">

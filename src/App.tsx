@@ -13,7 +13,7 @@ import Footer from './sections/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-film-dark">
+    <div className="min-h-screen bg-film-dark overflow-x-hidden">
       <Navigation />
       <main>
         <Hero />
