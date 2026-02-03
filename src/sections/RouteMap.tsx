@@ -61,10 +61,18 @@ export default function RouteMap() {
           style={{ transitionDelay: '300ms' }}
         >
           {/* Content Box with Text */}
-          <div className="relative rounded-lg overflow-hidden shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8 sm:p-12 lg:p-16">
-            <div className="min-h-96 flex flex-col items-center justify-center">
-              <h3 className="font-oswald font-bold text-3xl sm:text-4xl lg:text-5xl text-white uppercase mb-8 text-center">
-                <span className="text-gradient">... und was danach geschah</span>
+          <div className="relative rounded-lg overflow-hidden shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8 sm:p-12 lg:p-16 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+            <div className="min-h-96 flex flex-col items-center justify-center relative z-10">
+              <h3 className="font-oswald font-bold text-3xl sm:text-4xl lg:text-5xl uppercase mb-8 text-center">
+                <span 
+                  className="text-gradient inline-block"
+                  style={{ 
+                    clipPath: 'inset(0 100% 0 0)',
+                    animation: 'reveal-text 12s steps(26, end) infinite, fade-letters 12s steps(26, end) infinite'
+                  }}
+                >
+                  ... und was danach geschah
+                </span>
               </h3>
               <div className="space-y-6 max-w-2xl mx-auto text-white/80">
                 <p className="text-lg leading-relaxed text-center">
@@ -93,7 +101,7 @@ export default function RouteMap() {
           ].map((stat, index) => (
             <div 
               key={stat.label}
-              className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10"
+              className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-film-orange/40 hover:shadow-lg hover:shadow-film-orange/10 hover:bg-white/10 cursor-default"
               style={{ transitionDelay: `${900 + index * 100}ms` }}
             >
               <div className="font-oswald font-bold text-3xl sm:text-4xl text-gradient mb-2">

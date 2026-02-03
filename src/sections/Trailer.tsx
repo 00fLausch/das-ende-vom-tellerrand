@@ -72,7 +72,7 @@ export default function Trailer() {
               {/* Play Button */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <button 
-                  className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-film flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-scale"
+                  className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-film flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(241,149,28,0.45)] transition-all duration-300 animate-pulse-scale"
                   aria-label="Play trailer"
                 >
                   <Play className="w-8 h-8 sm:w-10 sm:h-10 text-film-dark fill-film-dark ml-1" />
@@ -118,7 +118,7 @@ export default function Trailer() {
             href="https://www.youtube.com/@LehmannsWeltreise"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-film-dark text-white font-oswald uppercase tracking-wider hover:bg-film-orange transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-film-dark text-white font-oswald uppercase tracking-wider hover:bg-film-orange hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300"
           >
             <Play className="w-4 h-4" />
             Zum YouTube Kanal

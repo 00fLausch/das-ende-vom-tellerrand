@@ -44,11 +44,11 @@ export default function FilmInfo() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'
             }`}
           >
-            <div className="relative overflow-hidden shadow-2xl">
+            <div className="relative overflow-hidden shadow-2xl group transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
               <img 
                 src="/images/filmmaker-portrait.jpg" 
                 alt="Filmmaker portrait"
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             {/* Decorative element */}
@@ -91,7 +91,7 @@ export default function FilmInfo() {
               {details.map((detail, index) => (
                 <div 
                   key={detail.label}
-                  className={`flex items-center gap-4 p-4 bg-white border-l-4 border-film-orange shadow-sm transition-all duration-700 ${
+                  className={`flex items-center gap-4 p-4 bg-white border-l-4 border-film-orange shadow-sm transition-all duration-700 hover:-translate-y-1 hover:shadow-lg hover:border-film-orange/80 ${
                     isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
                   }`}
                   style={{ transitionDelay: `${400 + index * 100}ms` }}

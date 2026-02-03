@@ -75,7 +75,7 @@ export default function Premiere() {
             {details.map((detail, index) => (
               <div 
                 key={detail.label}
-                className={`bg-white/10 backdrop-blur-sm p-6 border border-white/20 text-center transition-all duration-700 hover:bg-white/20 hover:border-film-orange/50 ${
+                className={`bg-white/10 backdrop-blur-sm p-6 border border-white/20 text-center transition-all duration-700 hover:bg-white/20 hover:border-film-orange/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-film-orange/20 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ 
@@ -114,7 +114,7 @@ export default function Premiere() {
           >
             <button 
               onClick={() => setShowDialog(true)}
-              className="px-8 py-4 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider text-lg hover:scale-105 transition-transform duration-300 flex items-center gap-2"
+              className="px-8 py-4 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider text-lg hover:scale-105 hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300 flex items-center gap-2"
             >
               <Mail className="w-5 h-5" />
               Jetzt Ticket reservieren
@@ -123,7 +123,7 @@ export default function Premiere() {
               href="https://t.me/+23N8QGXeHmdmOGZi"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 border-2 border-white/50 text-white font-oswald font-bold uppercase tracking-wider text-lg hover:bg-white/10 hover:border-white transition-all duration-300 flex items-center gap-2"
+              className="px-8 py-4 border-2 border-white/50 text-white font-oswald font-bold uppercase tracking-wider text-lg hover:bg-white/10 hover:border-white hover:shadow-[0_12px_30px_rgba(255,255,255,0.15)] transition-all duration-300 flex items-center gap-2"
             >
               <ExternalLink className="w-5 h-5" />
               Telegram Gruppe

@@ -155,7 +155,7 @@ export default function Support() {
 
         {/* Progress Section */}
         <div 
-          className={`bg-white/5 backdrop-blur-sm p-8 border border-white/10 mb-12 transition-all duration-1000 ${
+          className={`bg-white/5 backdrop-blur-sm p-8 border border-white/10 mb-12 transition-all duration-1000 hover:border-film-orange/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.35)] ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '300ms' }}
@@ -173,9 +173,22 @@ export default function Support() {
           
           <div className="relative h-4 bg-white/10 rounded-full overflow-hidden">
             <div 
-              className="absolute top-0 left-0 h-full bg-gradient-film transition-all duration-1500 ease-out rounded-full"
+              className="relative h-full transition-all duration-1500 ease-out rounded-full overflow-hidden"
               style={{ width: `${progress}%` }}
-            />
+            >
+              {/* Base Gradient */}
+              <div className="absolute inset-0 bg-gradient-film" />
+              
+              {/* Kontinuierlicher Shine-Effekt von links nach rechts - viel deutlicher */}
+              <div 
+                className="absolute inset-0"
+                style={{
+                  background: 'linear-gradient(90deg, transparent 0%, transparent 20%, rgba(255,255,255,0.95) 50%, transparent 80%, transparent 100%)',
+                  animation: 'shine-sweep 1.5s linear infinite',
+                  width: '60%'
+                }}
+              />
+            </div>
           </div>
           
           <div className="flex items-center justify-between mt-4 text-white/60">
@@ -208,7 +221,7 @@ export default function Support() {
           ].map((card) => (
             <div 
               key={card.title}
-              className={`bg-white/5 backdrop-blur-sm p-6 border border-white/10 text-center hover:border-film-orange/50 transition-all duration-500 ${
+              className={`bg-white/5 backdrop-blur-sm p-6 border border-white/10 text-center hover:border-film-orange/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-film-orange/10 transition-all duration-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${card.delay}ms` }}
@@ -231,7 +244,7 @@ export default function Support() {
             href="https://www.gofundme.com/f/auf-der-anderen-seite-des-fernsehers-teil-3"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider text-lg hover:scale-105 transition-transform duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider text-lg hover:scale-105 hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300"
           >
             <Heart className="w-5 h-5" />
             Zum Fundraising

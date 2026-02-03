@@ -57,7 +57,7 @@ export default function MusicSection() {
           style={{ transitionDelay: '300ms' }}
         >
           {/* Content Box */}
-          <div className="bg-white p-8 sm:p-10 shadow-xl border-l-4 border-film-orange">
+          <div className="bg-white p-8 sm:p-10 shadow-xl border-l-4 border-film-orange group transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               {/* Small Image */}
               <div className="relative flex-shrink-0">
@@ -65,7 +65,7 @@ export default function MusicSection() {
                   <img 
                     src="/images/frox.jpg" 
                     alt="frOx - Filmmusik"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 {/* Decorative frame */}
@@ -84,7 +84,7 @@ export default function MusicSection() {
                     href="https://youtu.be/Lv0jcF-bQpc"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-film-dark text-white font-oswald uppercase tracking-wider hover:bg-film-orange transition-colors duration-300"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-film-dark text-white font-oswald uppercase tracking-wider hover:bg-film-orange hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300"
                   >
                     <Headphones className="w-4 h-4" />
                     TimeFrog
@@ -93,7 +93,7 @@ export default function MusicSection() {
                     href="https://distrokid.com/hyperfollow/frox1/frox-is-born"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 border-2 border-film-dark text-film-dark font-oswald uppercase tracking-wider hover:bg-film-dark hover:text-white transition-colors duration-300"
+                    className="inline-flex items-center gap-2 px-6 py-3 border-2 border-film-dark text-film-dark font-oswald uppercase tracking-wider hover:bg-film-dark hover:text-white hover:shadow-[0_12px_30px_rgba(31,31,31,0.25)] transition-all duration-300"
                   >
                     <Music className="w-4 h-4" />
                     frOx

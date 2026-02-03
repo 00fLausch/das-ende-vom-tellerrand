@@ -83,7 +83,7 @@ export default function Hero() {
 
         {/* Event Info */}
         <div 
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-10 transition-all duration-1000 ${
+          className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-10 transition-all duration-1000 animate-[pulse-strong_2.5s_ease-in-out_infinite] ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '900ms' }}
@@ -107,13 +107,13 @@ export default function Hero() {
         >
           <button 
             onClick={() => scrollToSection('premiere')}
-            className="px-8 py-4 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider text-lg hover:scale-105 transition-transform duration-300"
+            className="relative px-8 py-4 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider text-lg hover:scale-105 hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300"
           >
             Tickets Reservieren
           </button>
           <button 
             onClick={() => scrollToSection('trailer')}
-            className="px-8 py-4 border-2 border-white/50 text-white font-oswald font-bold uppercase tracking-wider text-lg hover:bg-white/10 hover:border-white transition-all duration-300"
+            className="px-8 py-4 border-2 border-white/50 text-white font-oswald font-bold uppercase tracking-wider text-lg hover:bg-white/10 hover:border-white hover:shadow-[0_12px_30px_rgba(255,255,255,0.15)] transition-all duration-300"
           >
             Trailer Ansehen
           </button>

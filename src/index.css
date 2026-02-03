@@ -111,3 +111,191 @@
   background: rgba(241, 149, 28, 0.3);
   color: white;
 }
+
+/* Custom Keyframe Animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes typing-reveal {
+  0%, 100% {
+    width: 0;
+  }
+  10%, 90% {
+    width: 100%;
+  }
+}
+
+@keyframes reveal-text {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  30% {
+    clip-path: inset(0 0% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@keyframes fade-letters {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes typing-forward {
+  0% {
+    width: 0;
+  }
+  60% {
+    width: 100%;
+  }
+  80% {
+    width: 100%;
+  }
+  85% {
+    width: 0;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+@keyframes typing {
+  0%, 100% {
+    width: 0;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    width: 100%;
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-text {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  51% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes barber-pole {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 20px;
+  }
+}
+
+@keyframes pulse-bar {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes pulse-glow-strong {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-ring-strong {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes pulse-strong {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.03);
+  }
+}
