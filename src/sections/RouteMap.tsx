@@ -10,7 +10,6 @@ export default function RouteMap() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          setTimeout(() => setShowMarkers(true), 1000);
           observer.unobserve(entry.target);
         }
       },
