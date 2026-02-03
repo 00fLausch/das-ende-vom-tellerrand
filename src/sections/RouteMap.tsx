@@ -1,18 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { MapPin, Route } from 'lucide-react';
-
-const locations = [
-  { name: 'Teheran', x: 45, y: 25 },
-  { name: 'Isfahan', x: 42, y: 55 },
-  { name: 'Shiraz', x: 38, y: 75 },
-  { name: 'Yazd', x: 55, y: 60 },
-  { name: 'Tabriz', x: 25, y: 15 },
-  { name: 'Mashhad', x: 75, y: 30 },
-];
+import { Route } from 'lucide-react';
 
 export default function RouteMap() {
   const [isVisible, setIsVisible] = useState(false);
-  const [showMarkers, setShowMarkers] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

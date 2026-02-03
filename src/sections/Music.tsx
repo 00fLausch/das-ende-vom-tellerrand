@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Music, Headphones, Volume2 } from 'lucide-react';
+import { Music, Headphones } from 'lucide-react';
 
 export default function MusicSection() {
   const [isVisible, setIsVisible] = useState(false);
