@@ -36,10 +36,10 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-20 sm:pt-24 md:pt-0">
         {/* Subtitle */}
         <p 
-          className={`font-oswald font-normal text-xl sm:text-2xl md:text-3xl text-film-yellow mb-4 transition-all duration-1000 ${
+          className={`font-oswald font-normal text-xl sm:text-2xl md:text-3xl text-film-yellow mb-6 sm:mb-8 md:mb-4 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '300ms' }}
@@ -49,7 +49,7 @@ export default function Hero() {
 
         {/* Main Title */}
         <h1 
-          className={`font-oswald font-bold text-white uppercase tracking-tight leading-none mb-6 transition-all duration-1000 ${
+          className={`font-oswald font-bold text-white uppercase tracking-tight leading-tight mb-8 sm:mb-10 md:mb-6 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ 
