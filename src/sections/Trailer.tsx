@@ -106,7 +106,7 @@ export default function Trailer() {
 
         {/* CTA */}
         <div 
-          className={`text-center mt-10 transition-all duration-1000 ${
+          className={`text-center mt-10 transition-all duration-1000 animate-[pulse-strong_2.5s_ease-in-out_infinite] ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '500ms' }}
