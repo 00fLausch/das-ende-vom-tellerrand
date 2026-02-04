@@ -72,7 +72,7 @@ export default function Trailer() {
               {/* Play Button */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <button 
-                  className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-film flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(241,149,28,0.45)] transition-all duration-300 animate-[pulse-scale_3s_ease-in-out_infinite]"
+                  className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-film flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(241,149,28,0.45)] transition-all duration-300 animate-pulse-scale"
                   aria-label="Play trailer"
                 >
                   <Play className="w-8 h-8 sm:w-10 sm:h-10 text-film-dark fill-film-dark ml-1" />
