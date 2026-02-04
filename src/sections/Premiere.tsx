@@ -140,7 +140,7 @@ export default function Premiere() {
               Ticket Reservierung
             </DialogTitle>
             <DialogDescription className="text-white/60">
-              Reserviere dein Ticket für die Premiere am 20. Februar 2026
+              Reserviere dein Ticket für die Premiere am 15. März 2026
             </DialogDescription>
           </DialogHeader>
           
