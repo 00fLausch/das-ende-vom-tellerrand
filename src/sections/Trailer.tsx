@@ -112,7 +112,7 @@ export default function Trailer() {
           style={{ transitionDelay: '500ms' }}
         >
           <p className="text-film-dark/60 mb-4">
-            Der komplette Film erscheint am 8. März auf YouTube
+            Der komplette Film erscheint am 15. März auf YouTube
           </p>
           <a 
             href="https://www.youtube.com/@LehmannsWeltreise"
