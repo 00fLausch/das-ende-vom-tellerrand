@@ -46,7 +46,7 @@ export default function FilmInfo() {
           >
             <div className="relative overflow-hidden shadow-2xl group transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
               <img 
-                src="/images/filmmaker-portrait.jpg" 
+                src="/images/IMG_6859.jpeg" 
                 alt="Filmmaker portrait"
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
               />
