@@ -44,7 +44,7 @@ export default function Hero() {
           }`}
           style={{ transitionDelay: '300ms' }}
         >
-          Auf der anderen Seite des Fernsehers
+          AUF DER ANDEREN SEITE DES FERNSEHERS
         </p>
 
         {/* Main Title */}
