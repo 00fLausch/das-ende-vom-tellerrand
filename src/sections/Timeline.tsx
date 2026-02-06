@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Car, Film, Monitor, Star, Route } from 'lucide-react';
+import { Car, Film, Monitor, Star } from 'lucide-react';
 
 interface TimelineItem {
   year: string;
