@@ -98,7 +98,7 @@ export default function Premiere() {
             style={{ transitionDelay: '600ms' }}
           >
             <p className="text-white/80 text-lg">
-              Königstraße 8, 01097 Dresden
+              Königsbrücker Straße 8, 01097 Dresden
             </p>
             <p className="text-film-orange mt-2">
               Eintritt auf Spendenbasis
