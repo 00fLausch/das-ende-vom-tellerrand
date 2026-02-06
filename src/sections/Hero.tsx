@@ -97,9 +97,13 @@ export default function Hero() {
         <div 
           className="relative aspect-video overflow-visible shadow-2xl transition-all duration-300" 
           style={{ 
-            border: '4px solid rgba(40, 40, 50, 0.25)',
+            border: isPlaying ? 'none' : '4px solid rgba(40, 40, 50, 0.25)',
             borderRadius: '0px',
-            boxShadow: '0 0 30px rgba(241, 149, 28, 0.9), 0 0 60px rgba(241, 149, 28, 0.7), 0 0 100px rgba(241, 149, 28, 0.5), 0 0 150px rgba(241, 149, 28, 0.3), inset 0 0 40px rgba(241, 149, 28, 0.25)'
+            boxShadow: isPlaying 
+              ? '0 0 30px rgba(241, 149, 28, 0.9), 0 0 60px rgba(241, 149, 28, 0.7), 0 0 100px rgba(241, 149, 28, 0.5), 0 0 150px rgba(241, 149, 28, 0.3), inset 0 0 40px rgba(241, 149, 28, 0.25)'
+              : '0 0 30px rgba(241, 149, 28, 0.9), 0 0 60px rgba(241, 149, 28, 0.7), 0 0 100px rgba(241, 149, 28, 0.5), 0 0 150px rgba(241, 149, 28, 0.3), inset 0 0 40px rgba(241, 149, 28, 0.25)',
+            transform: isPlaying ? 'scale(1.02)' : 'scale(1)',
+            zIndex: isPlaying ? 20 : 10
           }}
         >
           {/* Thumbnail layer */}
@@ -145,6 +149,11 @@ export default function Hero() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="absolute inset-0 w-full h-full"
+              style={{
+                transform: 'scale(1.02)',
+                transformOrigin: 'center',
+                zIndex: 30
+              }}
             />
           )}
         </div>
