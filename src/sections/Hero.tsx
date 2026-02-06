@@ -147,10 +147,10 @@ export default function Hero() {
               allowFullScreen
               className="absolute"
               style={{
-                top: '-5%',
-                left: '-5%',
-                width: '110%',
-                height: '110%',
+                top: '-1.5%',
+                left: '-1.5%',
+                width: '103%',
+                height: '103%',
                 zIndex: 30
               }}
             />
