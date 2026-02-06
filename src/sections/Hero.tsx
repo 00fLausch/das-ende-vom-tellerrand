@@ -99,10 +99,7 @@ export default function Hero() {
           style={{ 
             border: isPlaying ? 'none' : '4px solid rgba(40, 40, 50, 0.25)',
             borderRadius: '0px',
-            boxShadow: isPlaying 
-              ? '0 0 30px rgba(241, 149, 28, 0.9), 0 0 60px rgba(241, 149, 28, 0.7), 0 0 100px rgba(241, 149, 28, 0.5), 0 0 150px rgba(241, 149, 28, 0.3), inset 0 0 40px rgba(241, 149, 28, 0.25)'
-              : '0 0 30px rgba(241, 149, 28, 0.9), 0 0 60px rgba(241, 149, 28, 0.7), 0 0 100px rgba(241, 149, 28, 0.5), 0 0 150px rgba(241, 149, 28, 0.3), inset 0 0 40px rgba(241, 149, 28, 0.25)',
-            transform: isPlaying ? 'scale(1.02)' : 'scale(1)',
+            boxShadow: '0 0 30px rgba(241, 149, 28, 0.9), 0 0 60px rgba(241, 149, 28, 0.7), 0 0 100px rgba(241, 149, 28, 0.5), 0 0 150px rgba(241, 149, 28, 0.3), inset 0 0 40px rgba(241, 149, 28, 0.25)',
             zIndex: isPlaying ? 20 : 10
           }}
         >
@@ -148,10 +145,12 @@ export default function Hero() {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="absolute inset-0 w-full h-full"
+              className="absolute"
               style={{
-                transform: 'scale(1.02)',
-                transformOrigin: 'center',
+                top: '-8px',
+                left: '-8px',
+                width: 'calc(100% + 16px)',
+                height: 'calc(100% + 16px)',
                 zIndex: 30
               }}
             />
