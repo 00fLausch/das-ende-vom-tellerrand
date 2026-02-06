@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { ChevronDown, Calendar, MapPin } from 'lucide-react';
+import { ChevronDown, Calendar, MapPin, Play } from 'lucide-react';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -111,12 +112,79 @@ export default function Hero() {
           >
             Tickets Reservieren
           </button>
-          <button 
-            onClick={() => scrollToSection('trailer')}
-            className="px-8 py-4 border-2 border-white/50 text-white font-oswald font-bold uppercase tracking-wider text-lg hover:bg-white/10 hover:border-white hover:shadow-[0_12px_30px_rgba(255,255,255,0.15)] transition-all duration-300"
-          >
-            Trailer Ansehen
-          </button>
+        </div>
+
+        {/* Trailer Section */}
+        <div 
+          className={`mt-16 max-w-4xl mx-auto transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionDelay: '1100ms' }}
+        >
+          {/* Trailer Video */}
+          <div className="relative mb-8">
+            {!isPlaying ? (
+              <div className="relative aspect-video overflow-hidden shadow-2xl group cursor-pointer"
+                   onClick={() => setIsPlaying(true)}>
+                <img 
+                  src="/images/trailer-thumb.jpg" 
+                  alt="Trailer thumbnail"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300" />
+                
+                {/* Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <button 
+                    className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-film flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(241,149,28,0.45)] transition-all duration-300 animate-pulse-scale"
+                    aria-label="Play trailer"
+                  >
+                    <Play className="w-8 h-8 sm:w-10 sm:h-10 text-film-dark fill-film-dark ml-1" />
+                    {/* Ripple effect */}
+                    <div className="absolute inset-0 rounded-full border-2 border-film-orange animate-ping opacity-30" />
+                  </button>
+                </div>
+
+                {/* Bottom info */}
+                <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center p-6 pb-6 bg-gradient-to-t from-black/80 to-transparent">
+                  <p className="text-white font-oswald text-lg uppercase tracking-wider text-center">
+                    Das Ende vom Tellerrand - Offizieller Trailer
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="relative aspect-video overflow-hidden shadow-2xl">
+                <iframe 
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/HA9MjXkE5Gg?autoplay=1"
+                  title="Das Ende vom Tellerrand - Trailer"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* YouTube Release Info */}
+          <div className="text-center">
+            <p className="text-white/80 mb-4 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
+              Der komplette Film erscheint am <strong className="text-film-orange">15. März</strong> auf YouTube
+            </p>
+            <a 
+              href="https://www.youtube.com/@LehmannsWeltreise"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white font-oswald uppercase tracking-wider hover:bg-film-orange hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300 border border-white/20"
+            >
+              <Play className="w-4 h-4" />
+              Zum YouTube Kanal
+            </a>
+          </div>
         </div>
       </div>
 
@@ -125,7 +193,7 @@ export default function Hero() {
         className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-all duration-1000 ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
-        style={{ transitionDelay: '1200ms' }}
+        style={{ transitionDelay: '1300ms' }}
       >
         <button 
           onClick={() => scrollToSection('film')}

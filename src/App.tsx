@@ -5,7 +5,6 @@ import FilmInfo from './sections/FilmInfo';
 import Timeline from './sections/Timeline';
 import AboutFilmmaker from './sections/AboutFilmmaker';
 import RouteMap from './sections/RouteMap';
-import Trailer from './sections/Trailer';
 import Premiere from './sections/Premiere';
 import MusicSection from './sections/Music';
 import Support from './sections/Support';
@@ -21,7 +20,6 @@ function App() {
         <Timeline />
         <AboutFilmmaker />
         <RouteMap />
-        <Trailer />
         <Premiere />
         <MusicSection />
         <Support />

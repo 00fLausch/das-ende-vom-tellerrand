@@ -6,7 +6,6 @@ const navLinks = [
   { label: 'Reise', href: '#timeline' },
   { label: 'Filmmaker', href: '#filmmaker' },
   { label: 'Route', href: '#route' },
-  { label: 'Trailer', href: '#trailer' },
   { label: 'Premiere', href: '#premiere' },
   { label: 'Musik', href: '#music' },
 ];
