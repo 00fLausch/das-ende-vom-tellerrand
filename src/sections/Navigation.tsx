@@ -3,11 +3,11 @@ import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: 'Film', href: '#film' },
-  { label: 'Reise', href: '#timeline' },
-  { label: 'Filmmaker', href: '#filmmaker' },
-  { label: 'Route', href: '#route' },
   { label: 'Premiere', href: '#premiere' },
+  { label: 'Filmmaker', href: '#filmmaker' },
+  { label: 'Reise', href: '#timeline' },
   { label: 'Musik', href: '#music' },
+  { label: 'Projekt unterstützen', href: '#support' },
 ];
 
 export default function Navigation() {
@@ -42,17 +42,30 @@ export default function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <a 
-              href="#hero"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('#hero');
-              }}
-              className="font-oswald font-bold text-xl text-white uppercase tracking-wider hover:text-film-orange transition-colors"
-            >
-              <span className="text-film-orange">HERRLEHMANNSWELTREISE</span>
-            </a>
+            <div className="flex items-center gap-6">
+              {/* Logo */}
+              <a 
+                href="#hero"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('#hero');
+                }}
+                className="font-oswald font-bold text-xl text-white uppercase tracking-wider hover:text-film-orange transition-colors"
+              >
+                <span className="text-film-orange">HERRLEHMANNSWELTREISE</span>
+              </a>
+              
+              {/* Ticket Button */}
+              <button
+                onClick={() => scrollToSection('#premiere')}
+                className="inline-flex px-3 py-2 sm:px-4 sm:py-2 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider text-xs sm:text-xs hover:scale-105 transition-all duration-300 animate-flicker"
+                style={{
+                  boxShadow: '0 0 15px rgba(241, 149, 28, 0.7), 0 0 25px rgba(241, 149, 28, 0.4)'
+                }}
+              >
+                Tickets
+              </button>
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
@@ -70,20 +83,6 @@ export default function Navigation() {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-film-orange transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
-            </div>
-
-            {/* CTA Button */}
-            <div className="hidden md:block">
-              <a
-                href="#premiere"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('#premiere');
-                }}
-                className="px-4 py-2 bg-gradient-film text-film-dark font-oswald font-bold uppercase text-sm tracking-wider hover:scale-105 transition-transform"
-              >
-                Tickets
-              </a>
             </div>
 
             {/* Mobile Menu Button */}

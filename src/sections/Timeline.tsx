@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Car, Film, Monitor, Star } from 'lucide-react';
+import { Car, Film, Monitor, Star, Route } from 'lucide-react';
 
 interface TimelineItem {
   year: string;
@@ -170,6 +170,67 @@ export default function Timeline() {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        {/* Durch den Iran Section - integrated */}
+        <div className="mt-16 sm:mt-20">
+          {/* Content Box with Text */}
+          <div 
+            className={`relative transition-all duration-1000 ${
+              isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            }`}
+            style={{ transitionDelay: '300ms' }}
+          >
+            <div className="relative rounded-lg overflow-hidden shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8 sm:p-12 lg:p-16 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+              <div className="min-h-96 flex flex-col items-center justify-center relative z-10">
+                <h3 className="font-oswald font-bold text-3xl sm:text-4xl lg:text-5xl uppercase mb-8 text-center">
+                  <span 
+                    className="text-gradient inline-block"
+                    style={{ 
+                      clipPath: 'inset(0 100% 0 0)',
+                      animation: 'reveal-text 12s steps(26, end) infinite, fade-letters 12s steps(26, end) infinite'
+                    }}
+                  >
+                    ... und was danach geschah
+                  </span>
+                </h3>
+                <div className="space-y-6 max-w-2xl mx-auto text-white/80">
+                  <p className="text-lg leading-relaxed text-center">
+                    Vom Losgehen und Wiederankommen und der Kunst, verrückt zu werden, um in dieser verrückten Welt nicht verrückt zu werden.
+                  </p>
+                  <p className="text-lg leading-relaxed text-center">
+                    Wenn du magst, dann werde ein Teil dieser abenteuerlichen Reise der zutiefst menschlichen Begegnungen, wo der Weg selbst zum Ziel wird und die Vergänglichkeit sich der Kreativität hingebend, auf die Freiheit verweist, die hinter der nächsten Kurve auf Verwirklichung wartet.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div 
+            className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '800ms' }}
+          >
+            {[
+              { value: '30.000', label: 'Kilometer' },
+              { value: '9', label: 'Monate Reise' },
+              { value: '9', label: 'Jahre Vanlife' },
+              { value: '1', label: 'Welt' },
+            ].map((stat, index) => (
+              <div 
+                key={stat.label}
+                className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-film-orange/40 hover:shadow-lg hover:shadow-film-orange/10 hover:bg-white/10 cursor-default"
+                style={{ transitionDelay: `${900 + index * 100}ms` }}
+              >
+                <div className="font-oswald font-bold text-3xl sm:text-4xl text-gradient mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-white/60 uppercase tracking-wider text-sm">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -11,16 +11,25 @@ import Support from './sections/Support';
 import Footer from './sections/Footer';
 
 function App() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-film-dark overflow-x-hidden">
       <Navigation />
+      
+      {/* Fixed Vertical Ticket Button - Moved to Navigation */}
+
       <main>
         <Hero />
         <FilmInfo />
-        <Timeline />
-        <AboutFilmmaker />
-        <RouteMap />
         <Premiere />
+        <AboutFilmmaker />
+        <Timeline />
         <MusicSection />
         <Support />
       </main>
