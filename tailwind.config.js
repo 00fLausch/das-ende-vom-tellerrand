@@ -114,7 +114,7 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
         "bounce-slow": "bounce-slow 2s ease-in-out infinite",
-        "pulse-scale": "pulse-scale 6s ease-in-out infinite",
+        "pulse-scale": "pulse-scale 8s ease-in-out infinite",
         "fade-in": "fade-in 1s ease-out forwards",
         "slide-up": "slide-up 1s cubic-bezier(0.165, 0.840, 0.440, 1) forwards",
         "slide-left": "slide-left 1s cubic-bezier(0.165, 0.840, 0.440, 1) forwards",
