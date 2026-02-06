@@ -104,6 +104,10 @@ module.exports = {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        "ping-slow": {
+          "0%": { transform: "scale(1)", opacity: "1" },
+          "75%, 100%": { transform: "scale(2)", opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -117,6 +121,7 @@ module.exports = {
         "slide-right": "slide-right 1s cubic-bezier(0.165, 0.840, 0.440, 1) forwards",
         "draw-line": "draw-line 2s ease-out forwards",
         "spin-slow": "spin-slow 4s linear infinite",
+        "ping-slow": "ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite",
       },
     },
   },

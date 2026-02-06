@@ -91,7 +91,7 @@ export default function Hero() {
                   >
                     <Play className="w-8 h-8 sm:w-10 sm:h-10 text-film-dark fill-film-dark ml-1" />
                     {/* Ripple effect */}
-                    <div className="absolute inset-0 rounded-full border-2 border-film-orange animate-ping opacity-30" />
+                    <div className="absolute inset-0 rounded-full border-2 border-film-orange animate-ping-slow opacity-30" />
                   </button>
                 </div>
 
