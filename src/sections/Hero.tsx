@@ -37,7 +37,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-20 sm:pt-24 md:pt-0">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-32 sm:pt-40 md:pt-20">
         {/* Subtitle */}
         <p 
           className={`font-oswald font-normal text-lg sm:text-xl md:text-2xl text-film-yellow mb-4 transition-all duration-1000 ${
@@ -97,8 +97,8 @@ export default function Hero() {
 
                 {/* Bottom info */}
                 <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center p-6 pb-6 bg-gradient-to-t from-black/80 to-transparent">
-                  <p className="text-white font-oswald text-lg uppercase tracking-wider text-center">
-                    Das Ende vom Tellerrand - Offizieller Trailer
+                  <p className="text-white font-oswald text-lg tracking-wider text-center">
+                    Schau dir jetzt den offiziellen Trailer hier an
                   </p>
                 </div>
               </div>
@@ -119,8 +119,23 @@ export default function Hero() {
           </div>
 
           {/* YouTube Release Info */}
-          <div className="text-center mb-6">
-            {/* Event Info */}
+          <div className="text-center mb-12">
+            <p className="text-white/80 mb-2 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
+              Der komplette Film erscheint am <strong className="text-film-orange">15. März</strong> auf YouTube
+            </p>
+            <a 
+              href="https://www.youtube.com/@LehmannsWeltreise"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 text-white font-oswald uppercase tracking-wider hover:bg-film-orange hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300 border border-white/20"
+            >
+              <Play className="w-4 h-4" />
+              Zum YouTube Kanal
+            </a>
+          </div>
+
+          {/* Premiere Event Info */}
+          <div className="text-center">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-6 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
               <div className="flex items-center gap-2 text-white/90">
                 <Calendar className="w-5 h-5 text-film-orange" />
@@ -132,28 +147,12 @@ export default function Hero() {
               </div>
             </div>
 
-            <p className="text-white/80 mb-6 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
-              Der komplette Film erscheint am <strong className="text-film-orange">15. März</strong> auf YouTube
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button 
-                onClick={() => scrollToSection('premiere')}
-                className="px-8 py-3 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider hover:scale-105 hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300"
-              >
-                Tickets Reservieren
-              </button>
-              <a 
-                href="https://www.youtube.com/@LehmannsWeltreise"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 text-white font-oswald uppercase tracking-wider hover:bg-film-orange hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300 border border-white/20"
-              >
-                <Play className="w-4 h-4" />
-                Zum YouTube Kanal
-              </a>
-            </div>
+            <button 
+              onClick={() => scrollToSection('premiere')}
+              className="px-8 py-3 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider hover:scale-105 hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300"
+            >
+              Tickets Reservieren
+            </button>
           </div>
         </div>
       </div>
