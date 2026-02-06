@@ -40,21 +40,21 @@ export default function Hero() {
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-20 sm:pt-24 md:pt-0">
         {/* Subtitle */}
         <p 
-          className={`font-oswald font-normal text-xl sm:text-2xl md:text-3xl text-film-yellow mb-6 sm:mb-8 md:mb-4 transition-all duration-1000 ${
+          className={`font-oswald font-normal text-lg sm:text-xl md:text-2xl text-film-yellow mb-4 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '300ms' }}
         >
-          AUF DER ANDEREN SEITE DES FERNSEHERS
+          Auf der anderen Seite des Fernsehers
         </p>
 
         {/* Main Title */}
         <h1 
-          className={`font-oswald font-bold text-white uppercase tracking-tight leading-tight mb-8 sm:mb-10 md:mb-6 transition-all duration-1000 ${
+          className={`font-oswald font-bold text-white uppercase tracking-tight leading-tight mb-12 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ 
-            fontSize: 'clamp(2.5rem, 10vw, 8rem)',
+            fontSize: 'clamp(2rem, 8vw, 5rem)',
             transitionDelay: '500ms'
           }}
         >
@@ -62,64 +62,12 @@ export default function Hero() {
           <span className="block text-gradient">vom Tellerrand</span>
         </h1>
 
-        {/* Part indicator */}
-        <p 
-          className={`font-oswald text-lg sm:text-xl md:text-2xl text-white/80 uppercase tracking-widest mb-8 transition-all duration-1000 ${
+        {/* Trailer Section */}
+        <div 
+          className={`max-w-4xl mx-auto transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '700ms' }}
-        >
-          Teil 3
-        </p>
-
-        {/* Tagline */}
-        <p 
-          className={`text-lg sm:text-xl text-white/70 mb-10 max-w-2xl mx-auto transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-          style={{ transitionDelay: '800ms' }}
-        >
-          Kein Reisefilm. Auch durch den Iran.
-        </p>
-
-        {/* Event Info */}
-        <div 
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-10 transition-all duration-1000 animate-[pulse-strong_2.5s_ease-in-out_infinite] ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-          style={{ transitionDelay: '900ms' }}
-        >
-          <div className="flex items-center gap-2 text-white/90">
-            <Calendar className="w-5 h-5 text-film-orange" />
-            <span className="font-oswald text-lg">20. Februar 2026</span>
-          </div>
-          <div className="flex items-center gap-2 text-white/90">
-            <MapPin className="w-5 h-5 text-film-orange" />
-            <span className="font-oswald text-lg">Schauburg Dresden</span>
-          </div>
-        </div>
-
-        {/* CTA Buttons */}
-        <div 
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-          style={{ transitionDelay: '1000ms' }}
-        >
-          <button 
-            onClick={() => scrollToSection('premiere')}
-            className="relative px-8 py-4 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider text-lg hover:scale-105 hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300"
-          >
-            Tickets Reservieren
-          </button>
-        </div>
-
-        {/* Trailer Section */}
-        <div 
-          className={`mt-16 max-w-4xl mx-auto transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-          style={{ transitionDelay: '1100ms' }}
         >
           {/* Trailer Video */}
           <div className="relative mb-8">
@@ -171,19 +119,41 @@ export default function Hero() {
           </div>
 
           {/* YouTube Release Info */}
-          <div className="text-center">
-            <p className="text-white/80 mb-4 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
+          <div className="text-center mb-6">
+            {/* Event Info */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-6 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
+              <div className="flex items-center gap-2 text-white/90">
+                <Calendar className="w-5 h-5 text-film-orange" />
+                <span className="font-oswald text-lg">20. Februar 2026</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/90">
+                <MapPin className="w-5 h-5 text-film-orange" />
+                <span className="font-oswald text-lg">Schauburg Dresden</span>
+              </div>
+            </div>
+
+            <p className="text-white/80 mb-6 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
               Der komplette Film erscheint am <strong className="text-film-orange">15. März</strong> auf YouTube
             </p>
-            <a 
-              href="https://www.youtube.com/@LehmannsWeltreise"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white font-oswald uppercase tracking-wider hover:bg-film-orange hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300 border border-white/20"
-            >
-              <Play className="w-4 h-4" />
-              Zum YouTube Kanal
-            </a>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button 
+                onClick={() => scrollToSection('premiere')}
+                className="px-8 py-3 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider hover:scale-105 hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300"
+              >
+                Tickets Reservieren
+              </button>
+              <a 
+                href="https://www.youtube.com/@LehmannsWeltreise"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 text-white font-oswald uppercase tracking-wider hover:bg-film-orange hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)] transition-all duration-300 border border-white/20"
+              >
+                <Play className="w-4 h-4" />
+                Zum YouTube Kanal
+              </a>
+            </div>
           </div>
         </div>
       </div>
