@@ -32,43 +32,27 @@ export default function Support() {
     setFundraising(prev => ({ ...prev, isLoading: true, error: false }));
     
     try {
-      // Versuche direkt die GoFundMe-Seite zu laden (funktioniert serverside besser)
-      const response = await fetch(GOFUNDME_URL);
+      // Fetch from our API instead of directly from GoFundMe
+      const response = await fetch('/api/fundraising-data');
       
-      if (!response.ok) throw new Error('Fetch failed');
+      if (!response.ok) throw new Error('API fetch failed');
       
-      const html = await response.text();
+      const data = await response.json();
       
-      // Improved regex pattern - sucht nach dem Progress-Muster "€X,XXX raised of €X.XK"
-      const progressMatch = html.match(/€([\d,]+)\s+raised\s+of\s+€([\d\.]+)K?/i);
+      setFundraising({
+        raised: data.raised,
+        goal: data.goal,
+        percentage: data.percentage,
+        isLoading: false,
+        error: false
+      });
       
-      if (progressMatch) {
-        // Parse die Zahlen
-        const raised = parseInt(progressMatch[1].replace(/,/g, ''), 10);
-        const goalStr = progressMatch[2];
-        const goal = goalStr.includes('.') 
-          ? parseInt((parseFloat(goalStr) * 1000).toString(), 10)
-          : parseInt(goalStr, 10) * 1000;
-        
-        const percentage = Math.round((raised / goal) * 100);
-        
-        setFundraising({
-          raised,
-          goal,
-          percentage,
-          isLoading: false,
-          error: false
-        });
-        
-        // Animiere Progress Bar
-        if (isVisible) {
-          setTimeout(() => setProgress(percentage), 500);
-        }
-      } else {
-        throw new Error('Could not parse data');
+      // Animiere Progress Bar
+      if (isVisible) {
+        setTimeout(() => setProgress(data.percentage), 500);
       }
     } catch (error) {
-      console.log('GoFundMe fetch failed, using fallback values:', error);
+      console.log('Fundraising data fetch failed, using fallback values:', error);
       setFundraising(prev => ({ ...prev, isLoading: false, error: true }));
     }
   };
