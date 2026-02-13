@@ -78,8 +78,12 @@ export default async function handler(req, res) {
         html: html
       };
 
-      console.log('Sende Email an:', to);
+      console.log('=== SENDE EMAIL ===');
+      console.log('An:', to);
+      console.log('Betreff:', subject);
       console.log('API Key vorhanden:', !!apiKey);
+      console.log('API Key Länge:', apiKey ? apiKey.length : 0);
+      console.log('Request Body:', JSON.stringify(requestBody, null, 2));
 
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -91,13 +95,19 @@ export default async function handler(req, res) {
       });
 
       const responseData = await response.json();
-      
+
+      console.log('=== RESPONSE ===');
+      console.log('Status:', response.status);
+      console.log('Response Data:', JSON.stringify(responseData, null, 2));
+
       if (!response.ok) {
-        console.error('Resend API Error:', responseData);
+        console.error('=== RESEND API ERROR ===');
+        console.error('Status:', response.status);
+        console.error('Error Data:', responseData);
         throw new Error(`Resend API error: ${responseData.message || JSON.stringify(responseData)}`);
       }
 
-      console.log('Email erfolgreich versendet:', responseData);
+      console.log('=== EMAIL ERFOLGREICH GESENDET ===');
       return responseData;
     };
 
