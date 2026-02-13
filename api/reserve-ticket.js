@@ -1,6 +1,17 @@
 // Reservierungsformular API - Sendet Emails via Resend
 
 export default async function handler(req, res) {
+  // CORS Headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -17,18 +28,13 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Anzahl der Tickets muss zwischen 1 und 10 liegen' });
     }
 
-    // Validiere Email-Format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return res.status(400).json({ error: 'Bitte gib eine gültige Email-Adresse ein' });
-    }
-
-    // Verwende Resend für Email-Versand
+    // Überprüfe API Key
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      console.error('RESEND_API_KEY nicht gesetzt');
+      console.error('ERROR: RESEND_API_KEY nicht in Umgebungsvariablen gesetzt!');
+      console.log('Verfügbare Vars:', Object.keys(process.env).filter(k => k.includes('RES') || k.includes('SEND')));
       return res.status(500).json({ 
-        error: 'Email-Service nicht konfiguriert. Bitte kontaktiere den Administrator.' 
+        error: 'API-Konfiguration fehlt. Bitte kontaktiere den Administrator.' 
       });
     }
 
@@ -65,44 +71,58 @@ export default async function handler(req, res) {
 
     // Sende Emails via Fetch zu Resend API
     const sendEmail = async (to, subject, html) => {
+      const requestBody = {
+        from: 'noreply@resend.dev',
+        to: to,
+        subject: subject,
+        html: html
+      };
+
+      console.log('Sende Email an:', to);
+      console.log('API Key vorhanden:', !!apiKey);
+
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${apiKey}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          from: 'noreply@resend.dev',
-          to: to,
-          subject: subject,
-          html: html
-        })
+        body: JSON.stringify(requestBody)
       });
 
+      const responseData = await response.json();
+      
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(`Resend API error: ${error.message || 'Unknown error'}`);
+        console.error('Resend API Error:', responseData);
+        throw new Error(`Resend API error: ${responseData.message || JSON.stringify(responseData)}`);
       }
 
-      return response.json();
+      console.log('Email erfolgreich versendet:', responseData);
+      return responseData;
     };
 
     // Versende beide Emails
+    console.log('Starte Email-Versand...');
     await Promise.all([
       sendEmail('mail@herrlehmanns-weltreise.de', `Neue Ticket-Reservierung: ${name} (${tickets} Tickets)`, organizerHtml),
       sendEmail(email, 'Ticket-Reservierung erhalten - Das Ende vom Tellerrand', visitorHtml)
     ]);
 
+    console.log('Alle Emails versendet!');
     return res.status(200).json({ 
       success: true, 
       message: 'Ticket-Reservierung erfolgreich versendet!'
     });
 
   } catch (error) {
-    console.error('API Error:', error);
+    console.error('API Error Details:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name
+    });
     return res.status(500).json({ 
       error: 'Fehler beim Versenden der Reservierung',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      details: error.message
     });
   }
 }

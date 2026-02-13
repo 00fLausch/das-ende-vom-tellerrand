@@ -55,6 +55,8 @@ export default function Premiere() {
     setSubmitMessage({ type: '', text: '' });
 
     try {
+      console.log('Sending form data:', formData);
+      
       const response = await fetch('/api/reserve-ticket', {
         method: 'POST',
         headers: {
@@ -63,7 +65,9 @@ export default function Premiere() {
         body: JSON.stringify(formData)
       });
 
+      console.log('Response status:', response.status);
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (response.ok) {
         setSubmitMessage({ 
@@ -90,11 +94,11 @@ export default function Premiere() {
         });
       }
     } catch (error) {
+      console.error('Submit error:', error);
       setSubmitMessage({ 
         type: 'error', 
         text: 'Fehler bei der Communicationsübertragung. Bitte versuche es später erneut.' 
       });
-      console.error('Submit error:', error);
     } finally {
       setIsSubmitting(false);
     }
