@@ -20,9 +20,9 @@ export default function Support() {
   
   // Live Fundraising Daten
   const [fundraising, setFundraising] = useState<FundraisingData>({
-    raised: 1596,  // Fallback-Werte
+    raised: 1631,  // Aktuelle Fallback-Werte
     goal: 1800,
-    percentage: 89,
+    percentage: 91,
     isLoading: true,
     error: false
   });
@@ -32,32 +32,23 @@ export default function Support() {
     setFundraising(prev => ({ ...prev, isLoading: true, error: false }));
     
     try {
-      // Verwende einen CORS-Proxy um GoFundMe abzurufen
-      const proxyUrl = 'https://api.allorigins.win/raw?url=';
-      const response = await fetch(proxyUrl + encodeURIComponent(GOFUNDME_URL));
+      // Versuche direkt die GoFundMe-Seite zu laden (funktioniert serverside besser)
+      const response = await fetch(GOFUNDME_URL);
       
       if (!response.ok) throw new Error('Fetch failed');
       
       const html = await response.text();
       
-      // Parse die Daten aus dem HTML
-      // GoFundMe speichert Daten in verschiedenen Formaten
+      // Improved regex pattern - sucht nach dem Progress-Muster "€X,XXX raised of €X.XK"
+      const progressMatch = html.match(/€([\d,]+)\s+raised\s+of\s+€([\d\.]+)K?/i);
       
-      // Suche nach dem raised amount (z.B. "€1,596 raised")
-      const raisedMatch = html.match(/€([\d,\.]+)\s*raised/i) || 
-                          html.match(/(\d[\d,\.]*)\s*€\s*raised/i) ||
-                          html.match(/"current_amount":\s*([\d\.]+)/i);
-      
-      // Suche nach dem Ziel (z.B. "of €1,800" oder "goal_amount")
-      const goalMatch = html.match(/of\s*€?([\d,\.K]+)/i) ||
-                        html.match(/"goal_amount":\s*([\d\.]+)/i);
-      
-      if (raisedMatch && goalMatch) {
+      if (progressMatch) {
         // Parse die Zahlen
-        let raised = parseFloat(raisedMatch[1].replace(/,/g, '').replace('K', '000'));
-        let goal = goalMatch[1].includes('K') 
-          ? parseFloat(goalMatch[1].replace('K', '')) * 1000
-          : parseFloat(goalMatch[1].replace(/,/g, ''));
+        const raised = parseInt(progressMatch[1].replace(/,/g, ''), 10);
+        const goalStr = progressMatch[2];
+        const goal = goalStr.includes('.') 
+          ? parseInt((parseFloat(goalStr) * 1000).toString(), 10)
+          : parseInt(goalStr, 10) * 1000;
         
         const percentage = Math.round((raised / goal) * 100);
         
@@ -77,7 +68,7 @@ export default function Support() {
         throw new Error('Could not parse data');
       }
     } catch (error) {
-      console.log('GoFundMe fetch failed, using fallback values');
+      console.log('GoFundMe fetch failed, using fallback values:', error);
       setFundraising(prev => ({ ...prev, isLoading: false, error: true }));
     }
   };
@@ -86,8 +77,8 @@ export default function Support() {
   useEffect(() => {
     fetchFundraisingData();
     
-    // Aktualisiere alle 5 Minuten
-    const interval = setInterval(fetchFundraisingData, 5 * 60 * 1000);
+    // Aktualisiere alle 2 Minuten
+    const interval = setInterval(fetchFundraisingData, 2 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
