@@ -10,9 +10,6 @@ interface FundraisingData {
   error: boolean;
 }
 
-// GoFundMe URL
-const GOFUNDME_URL = 'https://www.gofundme.com/f/auf-der-anderen-seite-des-fernsehers-teil-3';
-
 export default function Support() {
   const [isVisible, setIsVisible] = useState(false);
   const [progress, setProgress] = useState(0);
