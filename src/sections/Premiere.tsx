@@ -5,15 +5,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 export default function Premiere() {
   const [isVisible, setIsVisible] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    tickets: '1',
-    phone: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState({ type: '', text: '' });
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,69 +31,6 @@ export default function Premiere() {
     { icon: MapPin, label: 'Ort', value: 'Filmtheater Schauburg Dresden' },
     { icon: Users, label: 'Plätze', value: '400 verfügbar' },
   ];
-
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitMessage({ type: '', text: '' });
-
-    try {
-      console.log('Sending form data:', formData);
-      
-      const response = await fetch('/api/reserve-ticket', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
-
-      console.log('Response status:', response.status);
-      const data = await response.json();
-      console.log('Response data:', data);
-
-      if (response.ok) {
-        setSubmitMessage({ 
-          type: 'success', 
-          text: 'Ticket-Reservierung erfolgreich versendet! Du erhältst eine Bestätigungsmail.' 
-        });
-        // Form zurücksetzen
-        setFormData({
-          name: '',
-          email: '',
-          tickets: '1',
-          phone: '',
-          message: ''
-        });
-        // Dialog nach 3 Sekunden schließen
-        setTimeout(() => {
-          setShowDialog(false);
-          setSubmitMessage({ type: '', text: '' });
-        }, 3000);
-      } else {
-        setSubmitMessage({ 
-          type: 'error', 
-          text: data.error || 'Fehler beim Versenden der Reservierung' 
-        });
-      }
-    } catch (error) {
-      console.error('Submit error:', error);
-      setSubmitMessage({ 
-        type: 'error', 
-        text: 'Fehler bei der Communicationsübertragung. Bitte versuche es später erneut.' 
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <>
@@ -206,7 +134,7 @@ export default function Premiere() {
 
       {/* Reservation Dialog */}
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent className="bg-film-dark border-white/20 text-white max-w-md max-h-[90vh] overflow-y-auto">
+        <DialogContent className="bg-film-dark border-white/20 text-white max-w-md">
           <DialogHeader>
             <DialogTitle className="font-oswald text-2xl uppercase text-gradient">
               Ticket Reservierung
@@ -216,117 +144,30 @@ export default function Premiere() {
             </DialogDescription>
           </DialogHeader>
           
-          <form onSubmit={handleSubmit} className="space-y-4 pt-4">
-            {/* Name */}
-            <div>
-              <label className="block text-white/80 text-sm font-oswald uppercase mb-2">
-                Name *
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleFormChange}
-                required
-                className="w-full px-4 py-2 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-film-orange focus:outline-none transition-colors"
-                placeholder="Dein Name"
-              />
-            </div>
-
-            {/* Email */}
-            <div>
-              <label className="block text-white/80 text-sm font-oswald uppercase mb-2">
-                E-Mail *
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleFormChange}
-                required
-                className="w-full px-4 py-2 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-film-orange focus:outline-none transition-colors"
-                placeholder="deine@email.de"
-              />
-            </div>
-
-            {/* Anzahl Tickets */}
-            <div>
-              <label className="block text-white/80 text-sm font-oswald uppercase mb-2">
-                Anzahl Tickets *
-              </label>
-              <select
-                name="tickets"
-                value={formData.tickets}
-                onChange={handleFormChange}
-                required
-                className="w-full px-4 py-2 bg-white/10 border border-white/20 text-white focus:border-film-orange focus:outline-none transition-colors"
+          <div className="space-y-4 pt-4">
+            <div className="p-4 bg-white/5 border border-white/10">
+              <p className="text-white mb-2">Schicke eine E-Mail an:</p>
+              <a 
+                href="mailto:mail@herrlehmanns-weltreise.de"
+                className="text-film-orange font-oswald text-lg hover:underline"
               >
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-                  <option key={num} value={num} className="bg-film-dark">
-                    {num} {num === 1 ? 'Ticket' : 'Tickets'}
-                  </option>
-                ))}
-              </select>
+                mail@herrlehmanns-weltreise.de
+              </a>
+            </div>
+            
+            <div className="text-white/60 text-sm">
+              <p>Bitte gib folgende Informationen an:</p>
+              <ul className="list-disc list-inside mt-2 space-y-1">
+                <li>Name</li>
+                <li>Anzahl der Tickets</li>
+                <li>Telefonnummer (optional)</li>
+              </ul>
             </div>
 
-            {/* Telefon */}
-            <div>
-              <label className="block text-white/80 text-sm font-oswald uppercase mb-2">
-                Telefon (optional)
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleFormChange}
-                className="w-full px-4 py-2 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-film-orange focus:outline-none transition-colors"
-                placeholder="+49 123 456789"
-              />
-            </div>
-
-            {/* Nachricht */}
-            <div>
-              <label className="block text-white/80 text-sm font-oswald uppercase mb-2">
-                Nachricht (optional)
-              </label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleFormChange}
-                className="w-full px-4 py-2 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-film-orange focus:outline-none transition-colors resize-none"
-                placeholder="Weitere Informationen oder Fragen..."
-                rows={3}
-              />
-            </div>
-
-            {/* Status Message */}
-            {submitMessage.text && (
-              <div className={`p-3 rounded ${
-                submitMessage.type === 'success' 
-                  ? 'bg-green-900/30 border border-green-500/50 text-green-300' 
-                  : 'bg-red-900/30 border border-red-500/50 text-red-300'
-              }`}>
-                {submitMessage.text}
-              </div>
-            )}
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full px-4 py-3 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider transition-all duration-300 ${
-                isSubmitting 
-                  ? 'opacity-60 cursor-not-allowed' 
-                  : 'hover:scale-105 hover:shadow-[0_12px_30px_rgba(241,149,28,0.35)]'
-              }`}
-            >
-              {isSubmitting ? 'Wird versendet...' : 'Ticket reservieren'}
-            </button>
-
-            <p className="text-white/40 text-xs text-center">
-              * Erforderliche Felder
+            <p className="text-film-yellow text-sm">
+              Wir haben 400 Plätze verfügbar. First come, first served!
             </p>
-          </form>
+          </div>
         </DialogContent>
       </Dialog>
     </>

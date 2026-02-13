@@ -10,6 +10,9 @@ interface FundraisingData {
   error: boolean;
 }
 
+// GoFundMe URL
+const GOFUNDME_URL = 'https://www.gofundme.com/f/auf-der-anderen-seite-des-fernsehers-teil-3';
+
 export default function Support() {
   const [isVisible, setIsVisible] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -29,27 +32,43 @@ export default function Support() {
     setFundraising(prev => ({ ...prev, isLoading: true, error: false }));
     
     try {
-      // Fetch from our API instead of directly from GoFundMe
-      const response = await fetch('/api/fundraising-data');
+      // Versuche direkt die GoFundMe-Seite zu laden (funktioniert serverside besser)
+      const response = await fetch(GOFUNDME_URL);
       
-      if (!response.ok) throw new Error('API fetch failed');
+      if (!response.ok) throw new Error('Fetch failed');
       
-      const data = await response.json();
+      const html = await response.text();
       
-      setFundraising({
-        raised: data.raised,
-        goal: data.goal,
-        percentage: data.percentage,
-        isLoading: false,
-        error: false
-      });
+      // Improved regex pattern - sucht nach dem Progress-Muster "€X,XXX raised of €X.XK"
+      const progressMatch = html.match(/€([\d,]+)\s+raised\s+of\s+€([\d\.]+)K?/i);
       
-      // Animiere Progress Bar
-      if (isVisible) {
-        setTimeout(() => setProgress(data.percentage), 500);
+      if (progressMatch) {
+        // Parse die Zahlen
+        const raised = parseInt(progressMatch[1].replace(/,/g, ''), 10);
+        const goalStr = progressMatch[2];
+        const goal = goalStr.includes('.') 
+          ? parseInt((parseFloat(goalStr) * 1000).toString(), 10)
+          : parseInt(goalStr, 10) * 1000;
+        
+        const percentage = Math.round((raised / goal) * 100);
+        
+        setFundraising({
+          raised,
+          goal,
+          percentage,
+          isLoading: false,
+          error: false
+        });
+        
+        // Animiere Progress Bar
+        if (isVisible) {
+          setTimeout(() => setProgress(percentage), 500);
+        }
+      } else {
+        throw new Error('Could not parse data');
       }
     } catch (error) {
-      console.log('Fundraising data fetch failed, using fallback values:', error);
+      console.log('GoFundMe fetch failed, using fallback values:', error);
       setFundraising(prev => ({ ...prev, isLoading: false, error: true }));
     }
   };
