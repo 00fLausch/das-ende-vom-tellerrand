@@ -20,7 +20,7 @@ export default function Support() {
   
   // Live Fundraising Daten
   const [fundraising, setFundraising] = useState<FundraisingData>({
-    raised: 1800,  // Aktuelle Fallback-Werte
+    raised: 1845,  // Aktuelle Fallback-Werte
     goal: 2000,
     percentage: 93,
     isLoading: true,
