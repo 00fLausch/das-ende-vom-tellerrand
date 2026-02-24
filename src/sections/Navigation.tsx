@@ -3,7 +3,6 @@ import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: 'Film', href: '#film' },
-  { label: 'Premiere', href: '#premiere' },
   { label: 'Filmmaker', href: '#filmmaker' },
   { label: 'Reise', href: '#timeline' },
   { label: 'Musik', href: '#music' },
@@ -54,17 +53,6 @@ export default function Navigation() {
               >
                 <span className="text-film-orange">HERRLEHMANNSWELTREISE</span>
               </a>
-              
-              {/* Ticket Button */}
-              <button
-                onClick={() => scrollToSection('#premiere')}
-                className="inline-flex px-3 py-2 sm:px-4 sm:py-2 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider text-xs sm:text-xs hover:scale-105 transition-all duration-300 animate-flicker"
-                style={{
-                  boxShadow: '0 0 15px rgba(241, 149, 28, 0.7), 0 0 25px rgba(241, 149, 28, 0.4)'
-                }}
-              >
-                Tickets
-              </button>
             </div>
 
             {/* Desktop Navigation */}
@@ -120,19 +108,6 @@ export default function Navigation() {
               {link.label}
             </a>
           ))}
-          <a
-            href="#premiere"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('#premiere');
-            }}
-            className={`mt-4 px-8 py-3 bg-gradient-film text-film-dark font-oswald font-bold uppercase tracking-wider transition-all duration-500 ${
-              isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-            style={{ transitionDelay: `${navLinks.length * 50}ms` }}
-          >
-            Tickets Reservieren
-          </a>
         </div>
       </div>
     </>

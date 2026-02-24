@@ -63,35 +63,31 @@ export default function Hero() {
           <span className="block text-gradient">vom Tellerrand</span>
         </h1>
 
-        {/* Premiere Event Banner */}
+        {/* YouTube Premiere Banner */}
         <div 
-          className={`mb-10 sm:mb-14 md:mb-16 transition-all duration-1000 ${
+          className={`mb-6 sm:mb-8 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '600ms' }}
         >
           <p className="font-oswald text-film-orange text-lg sm:text-2xl md:text-3xl uppercase tracking-widest mb-2 sm:mb-3">
-            ★ Filmpremiere ★
+            ★ YouTube Premiere ★
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-10 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
             <div className="flex items-center gap-2 text-white">
               <Calendar className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 text-film-orange" />
-              <span className="font-oswald text-lg sm:text-2xl md:text-3xl">20. Februar 2026</span>
-            </div>
-            <div className="flex items-center gap-2 text-white">
-              <MapPin className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 text-film-orange" />
-              <span className="font-oswald text-lg sm:text-2xl md:text-3xl">Schauburg Dresden</span>
+              <span className="font-oswald text-lg sm:text-2xl md:text-3xl">20. März 2026</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Trailer Section - separate wider container */}
+      {/* Trailer Section - central */}
       <div 
         className={`relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-16 transition-[opacity,transform] duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
-        style={{ transitionDelay: '700ms', maxWidth: '800px' }}
+        style={{ transitionDelay: '700ms', maxWidth: '1000px' }}
       >
         {/* Trailer Video */}
         <div 
@@ -155,24 +151,6 @@ export default function Hero() {
               }}
             />
           )}
-        </div>
-
-        {/* Tickets Button */}
-        <div 
-          className={`mt-10 sm:mt-12 md:mt-14 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          style={{ transitionDelay: '800ms' }}
-        >
-          <a
-            href="#premiere"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('premiere');
-            }}
-            className="inline-block px-6 py-2.5 sm:px-10 sm:py-4 bg-gradient-film text-film-dark font-oswald font-bold text-base sm:text-lg md:text-xl rounded-lg hover:scale-105 transition-all duration-300 animate-flicker"
-            style={{ boxShadow: '0 0 15px rgba(241, 149, 28, 0.7), 0 0 25px rgba(241, 149, 28, 0.4)' }}
-          >
-            TICKETS RESERVIEREN
-          </a>
         </div>
       </div>
 

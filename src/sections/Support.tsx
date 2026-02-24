@@ -20,9 +20,9 @@ export default function Support() {
   
   // Live Fundraising Daten
   const [fundraising, setFundraising] = useState<FundraisingData>({
-    raised: 1631,  // Aktuelle Fallback-Werte
-    goal: 1800,
-    percentage: 91,
+    raised: 1878,  // Aktuelle Fallback-Werte (Stand: 2025)
+    goal: 2000,
+    percentage: 94,
     isLoading: true,
     error: false
   });
@@ -32,22 +32,49 @@ export default function Support() {
     setFundraising(prev => ({ ...prev, isLoading: true, error: false }));
     
     try {
-      // Versuche direkt die GoFundMe-Seite zu laden (funktioniert serverside besser)
+      // Versuche direkt die GoFundMe-Seite zu laden
       const response = await fetch(GOFUNDME_URL);
       
       if (!response.ok) throw new Error('Fetch failed');
       
       const html = await response.text();
       
-      // Improved regex pattern - sucht nach dem Progress-Muster "€X,XXX raised of €X.XK"
-      const progressMatch = html.match(/€([\d,]+)\s+raised\s+of\s+€([\d\.]+)K?/i);
+      // Robuste regex patterns für verschiedene GoFundMe Formate
+      // Pattern 1: "€1,878 raised of €2K"
+      let progressMatch = html.match(/€([\d,]+)\s+raised\s+of\s+€(\d+)K/i);
+      
+      // Pattern 2: "€1,878 raised of €2,000"
+      if (!progressMatch) {
+        progressMatch = html.match(/€([\d,]+)\s+raised\s+of\s+€([\d,]+)/i);
+      }
+      
+      // Pattern 3: "94% of €2,000 goal"
+      if (!progressMatch) {
+        const percentMatch = html.match(/(\d+)%\s+of\s+€([\d,]+)/i);
+        if (percentMatch) {
+          const percentage = parseInt(percentMatch[1], 10);
+          const goal = parseInt(percentMatch[2].replace(/,/g, ''), 10);
+          const raised = Math.round((percentage / 100) * goal);
+          setFundraising({
+            raised,
+            goal,
+            percentage,
+            isLoading: false,
+            error: false
+          });
+          if (isVisible) {
+            setTimeout(() => setProgress(percentage), 500);
+          }
+          return;
+        }
+      }
       
       if (progressMatch) {
         // Parse die Zahlen
         const raised = parseInt(progressMatch[1].replace(/,/g, ''), 10);
         const goalStr = progressMatch[2];
         const goal = goalStr.includes('.') 
-          ? parseInt((parseFloat(goalStr) * 1000).toString(), 10)
+          ? Math.round(parseFloat(goalStr) * 1000)
           : parseInt(goalStr, 10) * 1000;
         
         const percentage = Math.round((raised / goal) * 100);

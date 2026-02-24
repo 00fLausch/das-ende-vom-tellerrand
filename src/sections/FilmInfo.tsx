@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Clock, Calendar, MapPin, Ticket } from 'lucide-react';
+ 
 
 export default function FilmInfo() {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,12 +23,7 @@ export default function FilmInfo() {
     return () => observer.disconnect();
   }, []);
 
-  const details = [
-    { icon: Calendar, label: 'Premiere', value: '20. Februar 2026' },
-    { icon: Clock, label: 'Uhrzeit', value: '19:30 Uhr' },
-    { icon: MapPin, label: 'Ort', value: 'Schauburg Dresden' },
-    { icon: Ticket, label: 'Eintritt', value: 'Auf Spendenbasis' },
-  ];
+  // details removed — displayed inline in the section
 
   return (
     <section 
@@ -82,28 +77,27 @@ export default function FilmInfo() {
                 Vor sieben Jahren lief der erste Teil der Reisefilmtrilogie auf der großen Leinwand in Dresden. Mit dem zweiten Teil kam Corona und die Premiere fand nur online statt.
               </p>
               <p className="text-film-dark/80 text-lg leading-relaxed">
-                <strong className="text-film-orange">DAS ENDE VOM TELLERRAND</strong> feiert am 20. Februar in der Schauburg Dresden Premiere.
+                <strong className="text-film-orange">DAS ENDE VOM TELLERRAND</strong> feierte am 20. Februar in der Schauburg Dresden Premiere.
               </p>
             </div>
 
-            {/* Details Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {details.map((detail, index) => (
-                <div 
-                  key={detail.label}
-                  className={`flex items-center gap-4 p-4 bg-white border-l-4 border-film-orange shadow-sm transition-all duration-700 hover:-translate-y-1 hover:shadow-lg hover:border-film-orange/80 ${
-                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-                  }`}
-                  style={{ transitionDelay: `${400 + index * 100}ms` }}
-                >
-                  <detail.icon className="w-6 h-6 text-film-orange flex-shrink-0" />
-                  <div>
-                    <p className="text-sm text-film-dark/60 uppercase tracking-wider">{detail.label}</p>
-                    <p className="font-oswald font-semibold text-film-dark">{detail.value}</p>
-                  </div>
-                </div>
-              ))}
+            {/* Kino-Premiere Info */}
+            <div 
+              className={`mb-8 transition-all duration-1000 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: '400ms' }}
+            >
+              <div className="max-w-3xl bg-gradient-to-r from-film-orange/10 to-film-yellow/10 border border-film-orange/20 rounded-lg p-4 sm:p-6 text-center">
+                <p className="text-film-dark/80 text-sm sm:text-base md:text-lg">
+                  <span className="text-film-orange font-oswald uppercase tracking-wider">★ Kino‑Premiere ★</span>
+                  <br className="hidden sm:block" />
+                  Der Film zog knapp 400 Besucher an und war ein voller Erfolg.
+                </p>
+              </div>
             </div>
+
+            
           </div>
         </div>
       </div>

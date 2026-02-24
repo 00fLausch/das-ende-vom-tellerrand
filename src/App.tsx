@@ -4,7 +4,6 @@ import Hero from './sections/Hero';
 import FilmInfo from './sections/FilmInfo';
 import Timeline from './sections/Timeline';
 import AboutFilmmaker from './sections/AboutFilmmaker';
-import Premiere from './sections/Premiere';
 import MusicSection from './sections/Music';
 import Support from './sections/Support';
 import Footer from './sections/Footer';
@@ -20,7 +19,6 @@ function App() {
       <main>
         <Hero />
         <FilmInfo />
-        <Premiere />
         <AboutFilmmaker />
         <Timeline />
         <MusicSection />
