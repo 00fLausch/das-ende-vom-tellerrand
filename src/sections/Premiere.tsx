@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Clock, Calendar, MapPin, Heart, ExternalLink } from 'lucide-react';
+import { Clock, Calendar, MapPin, Heart, Play } from 'lucide-react';
 
 export default function Premiere() {
   const [isVisible, setIsVisible] = useState(false);
