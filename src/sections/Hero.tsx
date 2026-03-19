@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ChevronDown, Play } from 'lucide-react';
+import { ChevronDown, Calendar, Play } from 'lucide-react';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -74,11 +74,24 @@ export default function Hero() {
             href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-oswald font-bold text-black text-lg sm:text-2xl md:text-3xl uppercase tracking-widest mb-4 sm:mb-6 inline-block px-4 py-2 border-2 border-black hover:scale-105 transition-transform duration-300"
+            className="font-oswald font-bold text-red-600 text-lg sm:text-2xl md:text-3xl uppercase tracking-widest mb-4 sm:mb-6 inline-block px-4 py-2 hover:scale-105 transition-transform duration-300"
+            style={{
+              WebkitTextStroke: '1px black',
+              textShadow: '0 0 0 transparent'
+            }}
           >
             ★ YouTube Premiere ★
           </a>
           <div className="flex flex-col sm:flex-row items-start sm:items-start gap-6 sm:gap-8 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
+            <a
+              href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-white hover:text-red-500 transition-colors"
+            >
+              <Calendar className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+              <span className="font-oswald text-lg sm:text-2xl md:text-3xl">20. März 2026</span>
+            </a>
             {/* Timeline line */}
             <div className="hidden sm:block w-px bg-red-600 h-full" />
             {/* Timeline events */}
