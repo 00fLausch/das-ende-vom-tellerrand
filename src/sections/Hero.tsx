@@ -74,50 +74,49 @@ export default function Hero() {
             href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-oswald text-red-600 text-lg sm:text-2xl md:text-3xl uppercase tracking-widest mb-3 sm:mb-4 inline-block hover:scale-105 transition-transform duration-300"
+            className="font-oswald font-bold text-black text-lg sm:text-2xl md:text-3xl uppercase tracking-widest mb-4 sm:mb-6 inline-block px-4 py-2 border-2 border-black hover:scale-105 transition-transform duration-300"
           >
             ★ YouTube Premiere ★
           </a>
-          <div className="flex flex-col items-center gap-4 sm:gap-6 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
-            <a
-              href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white hover:text-red-500 transition-colors"
-            >
-              <Calendar className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8" />
-              <span className="font-oswald text-lg sm:text-2xl md:text-3xl">20. März 2026</span>
-            </a>
-            {/* Timeline - Event 1 */}
-            <a
-              href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-white hover:text-red-500 transition-colors border-l-4 border-red-500 pl-3 py-2 hover:bg-red-500/10 -ml-2"
-            >
-              <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-red-500" />
-              <span className="font-oswald text-xs sm:text-sm md:text-base">19:20 Uhr • Das Vorwort • LIVESTREAM</span>
-            </a>
-            {/* Timeline - Event 2 */}
-            <a
-              href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-white hover:text-red-500 transition-colors border-l-4 border-red-500 pl-3 py-2 hover:bg-red-500/10 -ml-2"
-            >
-              <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-red-500" />
-              <span className="font-oswald text-xs sm:text-sm md:text-base">19:30 Uhr • Filmstart</span>
-            </a>
-            {/* Timeline - Event 3 */}
-            <a
-              href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-white hover:text-red-500 transition-colors border-l-4 border-red-500 pl-3 py-2 hover:bg-red-500/10 -ml-2"
-            >
-              <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-red-500" />
-              <span className="font-oswald text-xs sm:text-sm md:text-base">21:05 Uhr • Q&A LIVESTREAM mit Teresa und Musik von Vera & mARTin</span>
-            </a>
+          <div className="flex flex-col sm:flex-row items-start sm:items-start gap-6 sm:gap-8 animate-[pulse-strong_2.5s_ease-in-out_infinite]">
+            {/* Timeline line */}
+            <div className="hidden sm:block w-px bg-red-600 h-full" />
+            {/* Timeline events */}
+            <div className="flex flex-col gap-4 sm:gap-5 w-full">
+              <a
+                href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 sm:gap-4 text-white hover:text-red-500 transition-colors"
+              >
+                {/* Timeline dot */}
+                <div className="flex-shrink-0 w-3 h-3 sm:w-4 sm:h-4 bg-red-600 rounded-full mt-1 sm:mt-2" />
+                {/* Event text */}
+                <span className="font-oswald text-xs sm:text-sm md:text-base">19:20 Uhr • Das Vorwort • LIVESTREAM</span>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 sm:gap-4 text-white hover:text-red-500 transition-colors"
+              >
+                {/* Timeline dot */}
+                <div className="flex-shrink-0 w-3 h-3 sm:w-4 sm:h-4 bg-red-600 rounded-full mt-1 sm:mt-2" />
+                {/* Event text */}
+                <span className="font-oswald text-xs sm:text-sm md:text-base">19:30 Uhr • Filmstart</span>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 sm:gap-4 text-white hover:text-red-500 transition-colors"
+              >
+                {/* Timeline dot */}
+                <div className="flex-shrink-0 w-3 h-3 sm:w-4 sm:h-4 bg-red-600 rounded-full mt-1 sm:mt-2" />
+                {/* Event text */}
+                <span className="font-oswald text-xs sm:text-sm md:text-base">21:05 Uhr • Q&A LIVESTREAM mit Teresa und Musik von Vera & mARTin</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
