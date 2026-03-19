@@ -76,7 +76,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="font-oswald font-bold text-red-600 text-lg sm:text-2xl md:text-3xl uppercase tracking-widest mb-4 sm:mb-6 inline-block px-4 py-2 hover:scale-105 transition-transform duration-300"
             style={{
-              WebkitTextStroke: '1px black',
+              WebkitTextStroke: '1.5px black',
               textShadow: '0 0 0 transparent'
             }}
           >
