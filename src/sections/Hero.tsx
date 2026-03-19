@@ -74,7 +74,7 @@ export default function Hero() {
             href="https://www.youtube.com/channel/UCy-sRVtTjWJAQXVhnFw-a3g"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-oswald font-bold text-red-600 text-xl sm:text-3xl md:text-4xl uppercase tracking-widest mb-4 sm:mb-6 inline-block px-4 py-2 hover:scale-105 transition-transform duration-300"
+            className="font-oswald font-black text-red-600 text-xl sm:text-3xl md:text-4xl uppercase tracking-widest mb-4 sm:mb-6 inline-block px-4 py-2 hover:scale-105 transition-transform duration-300"
             style={{
               WebkitTextStroke: '2px black',
               textShadow: '0 0 0 transparent'
